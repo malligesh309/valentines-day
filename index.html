@@ -9,16 +9,31 @@
 </head>
 <body>
     <div id="container">
-        <div id="image-container"></div> <!-- Container for displaying images -->
+        <div id="image-container">
+            <img src="cat.gif" alt="Cat"> <!-- Cat GIF -->
+        </div>
         <div id="text-container">
-            <div id="question">Will you be my valentine?</div> <!-- Question -->
+            <div id="question">Will you be my Valentine?</div> <!-- Question -->
             <div id="options">
-                <button id="yes-button" onclick="selectOption('yes')">Yes</button> <!-- Yes button -->
-                <button id="no-button" onclick="selectOption('no')">No</button> <!-- No button -->
+                <button id="yes-button" onclick="redirectToPoem()">Yes</button> <!-- Yes button -->
+                <button id="no-button" onclick="selectNo()">No</button> <!-- No button -->
             </div>
         </div>
     </div>
 
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+    <script>
+        function redirectToPoem() {
+            window.location.href = "poem.html"; // Redirect to poem page
+        }
+
+        function selectNo() {
+            var noButton = document.getElementById("no-button");
+            noButton.innerText = "You sure?";
+
+            var yesButton = document.getElementById("yes-button");
+            var currentSize = window.getComputedStyle(yesButton).fontSize;
+            yesButton.style.fontSize = (parseFloat(currentSize) * 2) + "px"; // Increase size
+        }
+    </script>
 </body>
 </html>
